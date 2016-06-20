@@ -158,12 +158,12 @@ if __name__ == '__main__':
                 else:
                     print("This is your current flight plan: ")
                     trip.print_list()
-                    trip.insertPos(input("Where would you like your stop to be inserted, please enter (1-" + str(trip.getNumStops()) + "): "),
+                    trip.insertPos(input("Where would you like your stop to be inserted, please enter (1-{}): ".format(str(trip.getNumStops()))),
                                    input("What is the airport code of your desired stop: "))
             elif result == '3':
                 print("This is your current flight plan: ")
                 trip.print_list()
-                trip.remPos(input("Which stop would you like to remove, please enter (1-" + str(trip.getNumStops()) + "): "))
+                trip.remPos(input("Which stop would you like to remove, please enter 1-{}): ".format(str(trip.getNumStops()))))
             elif result == '4':
                 trip.print_list()
             elif result == '5':
