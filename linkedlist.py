@@ -1,6 +1,13 @@
 """
-
+    Program:        linkedlist.py
+    Author:         Peter Southwick
+    Date:           06/19/16
+    Description:    A program that has two classes, one Node class to store an airports code, a priority
+                    of the airport, and a link to the following node.  The next class is a linkedlist class
+                    that is responsible for maintaining a list of airport 'nodes'.  In the main portion of the code
+                    provides a way for the user to interact with the two classes and their functions.
 """
+
 
 class Node:
     def __init__(self, airportCode=None, priority=None):
@@ -88,7 +95,7 @@ class LinkedList:
         lnode = self.__head
         lpos = 1
         pnode = lnode
-        while lnode.next is not None and lpos < pos:
+        while lnode.next is not None and lpos < float(pos):
             pnode = lnode
             lnode = lnode.next
             lpos += 1
@@ -124,39 +131,45 @@ class LinkedList:
     def getNumStops(self):
         return self.__numnodes
 
-def doWork():
-    trip = LinkedList()
-    trip.insertFirst(input("Please input the airport code of your originating airport: "))
-    trip.insertLast(input("Please input the airport code of your desired destination airport: "))
-    result = ''
-    while result != '99':
-        result = input("(0): Change the starting airport code\n"
-                       "(1): Change the destination airport code\n"
-                       "(2): Add a stop\n"
-                       "(3): Remove a stop\n"
-                       "(4): Display your current flight plan\n"
-                       "(5): Display the number of stops\n"
-                       "(99): Quit this program\n")
-        if result == '0':
-            trip.remFirst()
-            trip.insertFirst(input("Please enter the airport code of your originating airport: "))
-        elif result == '1':
-            trip.remLast()
-            trip.insertLast(input("Please enter the airport code of your desired destination airport: "))
-        elif result == '2':
-            if trip.getNumStops() == 2:
-                trip.insertPos(2, input("Please input the airport code of your desired stop: "))
-            else:
+if __name__ == '__main__':
+
+    def doWork():
+        trip = LinkedList()
+        trip.insertFirst(input("Please input the airport code of your originating airport: "))
+        trip.insertLast(input("Please input the airport code of your desired destination airport: "))
+        result = ''
+        while result != '99':
+            result = input("(0): Change the starting airport code\n"
+                           "(1): Change the destination airport code\n"
+                           "(2): Add a stop\n"
+                           "(3): Remove a stop\n"
+                           "(4): Display your current flight plan\n"
+                           "(5): Display the number of stops\n"
+                           "(99): Quit this program\n")
+            if result == '0':
+                trip.remFirst()
+                trip.insertFirst(input("Please enter the airport code of your originating airport: "))
+            elif result == '1':
+                trip.remLast()
+                trip.insertLast(input("Please enter the airport code of your desired destination airport: "))
+            elif result == '2':
+                if trip.getNumStops() == 2:
+                    trip.insertPos(2, input("Please input the airport code of your desired stop: "))
+                else:
+                    print("This is your current flight plan: ")
+                    trip.print_list()
+                    trip.insertPos(input("Where would you like your stop to be inserted, please enter (1-" + str(trip.getNumStops()) + "): "),
+                                   input("What is the airport code of your desired stop: "))
+            elif result == '3':
                 print("This is your current flight plan: ")
                 trip.print_list()
-                trip.insertPos(input("Where would you like your stop to be inserted, please enter (1-, trip.getNumStops()"),
-                               input("What is the airport code of your desired stop: "))
-        elif result == '4':
-            trip.print_list()
-        elif result == '5':
-            print(trip.getNumStops())
+                trip.remPos(input("Which stop would you like to remove, please enter (1-" + str(trip.getNumStops()) + "): "))
+            elif result == '4':
+                trip.print_list()
+            elif result == '5':
+                print(trip.getNumStops())
 
-print("Welcome to my flight stop program.")
-doWork()
+    print("Welcome to my flight stop program.")
+    doWork()
 
 
