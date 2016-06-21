@@ -2,12 +2,12 @@
     Program:        linkedlist.py
     Author:         Peter Southwick
     Date:           06/19/16
-    Description:    A program that has two classes, one Node class to store an airports code, a priority
-                    of the airport, and a link to the following node.  The next class is a linkedlist class
-                    that is responsible for maintaining a list of airport 'nodes'.  In the main portion of the code
-                    provides a way for the user to interact with the two classes and their functions.
+    Description:    A program that uses and extends the 'Node' and 'LinkedList' classes from the book,
+                    the Node class stores the airports code, the priority of the airport, and a link to the following
+                    node.  The linkedlist class is responsible for maintaining a list of airport 'nodes'.
+                    In the main function of the code provides a way for the user to interact with the two classes and
+                    their functions and to demonstrate the requrirements for Assignment #3.
 """
-
 
 class Node:
 
